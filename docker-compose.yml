@@ -1,10 +1,10 @@
 version: "3.8"
 
 services:
-  netapp-storage-service:
+  distributed:
     build: .
-    image: netapp-storage-service:local
-    container_name: netapp-storage-service
+    image: distributed:local
+    container_name: distributed
     ports:
       - "8080:8080"
     networks:

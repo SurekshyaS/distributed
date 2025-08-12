@@ -17,9 +17,12 @@ func main() {
 	// Health and sample endpoints
 	r.GET("/ping", handlers.PingHandler)
 	r.GET("/healthz", handlers.PingHandler)
+	// Example: Users endpoint
+	r.GET("/users", handlers.GetUsersHandler)
 
 	// Start server
 	if err := r.Run(":8080"); err != nil {
 		log.Fatalf("failed to run server: %v", err)
 	}
+	
 }

@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: netapp-storage-service
+  name: distributed
   labels:
-    app: netapp-storage-service
+    app: distributed
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: netapp-storage-service
+      app: distributed
   template:
     metadata:
       labels:
-        app: netapp-storage-service
+        app: distributed
     spec:
       containers:
-        - name: netapp-storage-service
-          image: your-dockerhub-username/netapp-storage-service:latest
+        - name: distributed
+          image: your-dockerhub-username/distributed:latest
           ports:
             - containerPort: 8080
           livenessProbe:

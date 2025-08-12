@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netapp-storage-service
+  labels:
+    app: netapp-storage-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: netapp-storage-service
+  template:
+    metadata:
+      labels:
+        app: netapp-storage-service
+    spec:
+      containers:
+        - name: netapp-storage-service
+          image: your-dockerhub-username/netapp-storage-service:latest
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10

@@ -1,0 +1,125 @@
+## App Setup
+### Download:
+https://go.dev/doc/install
+This creates a go.mod file, which manages your project dependencies
+go mod init <project name>
+
+## Get Gin package
+```shell
+go get github.com/gin-gonic/gin
+```shell
+
+This will download Gin and add it to your go.mod file.
+
+## Get Prometheus client library
+```shell
+go get github.com/prometheus/client_golang
+```shell
+
+## Tidy Dependency
+```shell
+go mod tidy
+```shell
+
+
+
+git init
+
+# Distributed File Metadata Service
+
+This project is a cloud-native microservice built with Golang that provides CRUD operations for file metadata.  
+It is designed to run on Kubernetes and is instrumented with Prometheus for metrics collection.
+# NetApp-style Storage Service (Gin + Prometheus)
+
+## Quick start (local, using Docker Compose)
+
+1. Build and start services:
+   ```bash
+   docker compose up --build
+
+
+## Features
+
+- REST API with Gin framework  
+- PostgreSQL database backend via GORM ORM  
+- Health and readiness probes for Kubernetes  
+- Prometheus metrics for HTTP requests and latency  
+- Dockerized for container deployment  
+- Kubernetes manifests for deployment and service  
+
+## Prerequisites
+
+- Go 1.20+  
+- Docker  
+- Kubernetes cluster (Minikube, Kind, or cloud provider)  
+- PostgreSQL database accessible from your cluster  
+- kubectl CLI installed  
+- Prometheus installed in your cluster (optional, for metrics)  
+
+## Setup
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/SurekshyaS/distributed
+cd distributed
+
+netapp-storage-service/
+├── cmd/
+│   └── server/
+│       └── main.go
+├── internal/
+│   ├── handlers/
+│   │   └── ping.go
+│   └── monitoring/
+│       └── prometheus.go
+├── deploy/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── prometheus-scrape.yaml
+├── docker/
+│   └── prometheus.yml
+├── Dockerfile
+├── docker-compose.yml
+├── go.mod
+└── README.md
+
+Tech Stack
+Language: Golang (1.21+)
+
+Frameworks/libs: gin (HTTP) or chi, grpc-go (optional), gorm or sqlx for DB
+
+DB: Postgres (metadata) + optional Redis for cache
+
+Container: Docker
+
+Orchestration: Kubernetes
+
+Observability: Prometheus + Grafana + OpenTelemetry (tracing)
+
+CI/CD: GitHub Actions (build, unit tests, static analysis, container publish, deploy)
+
+Load test: k6 or hey
+
+Load balancer / ingress: optional (ingress-nginx)
+
+## Visit
+App: http://localhost:8080/ping
+
+Prometheus UI: http://localhost:9090 (scrape target should be netapp-storage-service:8080)
+
+Grafana: http://localhost:3000
+
+### Run locally (no containers)
+Ensure Go 1.20+ installed
+
+From project root:
+
+bash
+Copy
+Edit
+go mod download
+go run ./cmd/server
+Visit http://localhost:8080/ping and http://localhost:8080/metrics
+
+Deploy to Kubernetes

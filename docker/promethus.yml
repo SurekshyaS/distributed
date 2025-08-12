@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'netapp-storage-service'
+    static_configs:
+      - targets: ['netapp-storage-service:8080']

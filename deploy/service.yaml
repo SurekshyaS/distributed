@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: netapp-storage-service
+spec:
+  selector:
+    app: netapp-storage-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

@@ -20,16 +20,17 @@ go get github.com/prometheus/client_golang
 ```shell
 go mod tidy
 ```shell
+## Run the app
+go run ./cmd/server
+OR
+cd cmd/server
+go run .
 
-
-
-git init
-
-# Distributed File Metadata Service
+## Distributed File Metadata Service
 
 This project is a cloud-native microservice built with Golang that provides CRUD operations for file metadata.  
 It is designed to run on Kubernetes and is instrumented with Prometheus for metrics collection.
-# NetApp-style Storage Service (Gin + Prometheus)
+# Distributed Service (Gin + Prometheus)
 
 ## Quick start (local, using Docker Compose)
 

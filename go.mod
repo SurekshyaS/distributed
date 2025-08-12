@@ -1,4 +1,4 @@
-module github.com/yourusername/netapp-storage-service
+module github.com/SurekshyaS/distributed
 
 go 1.23.0
 
